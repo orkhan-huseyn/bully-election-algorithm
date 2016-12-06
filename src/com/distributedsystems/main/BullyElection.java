@@ -31,8 +31,10 @@ public class BullyElection
 		
 		//then node #0 sends check message to everyone
 		for (Node remoteNode : nodes.values()) {
-			nodes.get(0).sendMessage(0, remoteNode.getId(), Message.NORMAL_MESSAGE);
-			//till now everything is ok
+			if (remoteNode.getId() != 0) {
+				nodes.get(0).sendMessage(0, remoteNode.getId(), Message.NORMAL_MESSAGE);
+			}
+			//till now everything is ok	
 		}
 		
 		//then the coordinator goes down

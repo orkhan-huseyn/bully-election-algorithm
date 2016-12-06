@@ -17,8 +17,9 @@ public class DeadState implements State {
 			System.out.println(message.toString());
 			node.getQueue().removeFirst();
 			
-			node.sendMessage(node.getId(), message.getSenderId(), Message.DEAD_MESSAGE);
+			if(message.getSenderId() != node.getId()) {
+				node.sendMessage(node.getId(), message.getSenderId(), Message.DEAD_MESSAGE);
+			}
 		}
 	}
-
 }

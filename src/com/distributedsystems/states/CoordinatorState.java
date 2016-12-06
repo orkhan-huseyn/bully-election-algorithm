@@ -16,7 +16,9 @@ public class CoordinatorState implements State
 	{
 		node.setCoordinator(true);
 		for (int remoteId : BullyElection.nodes.keySet()) {
-			node.sendMessage(node.getId(), remoteId, Message.COORDINATOR_MESSAGE);
+			if(remoteId!=node.getId()) {
+				node.sendMessage(node.getId(), remoteId, Message.COORDINATOR_MESSAGE);
+			}
 		}
 	}
 
